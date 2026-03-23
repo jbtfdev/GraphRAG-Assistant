@@ -12,7 +12,7 @@ def embedd(chunks):
 
 
 
-jk = load_pdf("data/papers/1412.6980v9.pdf")
+'''jk = load_pdf("data/papers/1412.6980v9.pdf")
 kaki = chunk_text(jk)
 batman = embedd(kaki)
-print(batman[10])
+print(batman[10])'''
