@@ -39,17 +39,3 @@ def generator_answer(query, chunks):
     data = response.json()
 
     return data.get("response", "")
-
-
-'''if __name__ == "__main__":
-    query = "What is Adam optimizer?"
-
-    chunks = [
-        "Adam is an optimization algorithm used for training neural networks.",
-        "It combines momentum and adaptive learning rates.",
-        "It is widely used because it converges faster."
-    ]
-
-    answer = generator_answer(query, chunks)
-    print("\n=== ANSWER ===\n")
-    print(answer)'''
