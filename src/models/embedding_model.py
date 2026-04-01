@@ -1,3 +1,8 @@
-from sentence_transformers import SentenceTransformer
+import os
+from contextlib import redirect_stdout, redirect_stderr
 
-model = SentenceTransformer("all-MiniLM-L6-v2")
+fnull = open(os.devnull, "w")
+
+with redirect_stdout(fnull), redirect_stderr(fnull):
+    from sentence_transformers import SentenceTransformer
+    model = SentenceTransformer("all-MiniLM-L6-v2")

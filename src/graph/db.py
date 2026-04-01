@@ -11,4 +11,5 @@ class Neo4jDB:
 
     def run_query(self, query, params=None):
         with self.driver.session() as session:
-            return session.run(query, params)
+            result = session.run(query, params)
+            return result.data()

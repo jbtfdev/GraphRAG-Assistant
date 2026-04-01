@@ -49,8 +49,3 @@ def extract_entities(chunks: str):
     parsed = json.loads(raw)
 
     return parsed
-
-
-
-d = extract_entities("Patients with type 2 diabetes are often treated with metformin, which helps regulate glucose levels in the body.")
-print(d)
