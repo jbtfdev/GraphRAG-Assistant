@@ -77,7 +77,7 @@ class Medinfo:
                 "year": int(year),
                 "mesh_terms": mesh_terms
             }
-        Pubmed_metadata.append(paper_dict)
+            Pubmed_metadata.append(paper_dict)
 
         return Pubmed_metadata
 
