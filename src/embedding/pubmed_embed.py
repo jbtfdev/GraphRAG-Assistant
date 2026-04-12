@@ -12,7 +12,7 @@ with open("data/processed/pubmed_chunks.json", "r") as f:
 
 texts = [chunk["text"] for chunk in chunks]
 pm_embeddings = embedd(texts)
-index, vectors = vector_store(pm_embeddings)
+index, chunks = vector_store(pm_embeddings)
 faiss.write_index(index, "data/vector/pubmed_index.faiss")
 with open("data/vector/pubmed_metadata.pkl", "wb") as f:
     pickle.dump(chunks, f)
