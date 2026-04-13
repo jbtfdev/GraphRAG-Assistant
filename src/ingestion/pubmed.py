@@ -80,22 +80,3 @@ class Medinfo:
             Pubmed_metadata.append(paper_dict)
 
         return Pubmed_metadata
-
-    
-
-
-
-
-
-
-
-# medfo = Medinfo("insulin resistance mechanism")
-# idlst = medfo.search()
-# fetched = medfo.fetch(idlst)
-# papers = medfo.parse(fetched)
-# filename = "Results.json"
-
-# with open(filename, "w", encoding="utf-8") as f:
-#     json.dump(papers, f, indent=4)
-
-# print(f"Success! Data SAVED TO {filename}") 
