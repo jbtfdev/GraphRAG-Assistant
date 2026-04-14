@@ -1,0 +1,106 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+/* v4 Theme Configuration */
+@theme {
+  --color-slate-950: #020617;
+  --color-slate-900: #0f172a;
+  --color-slate-800: #1e293b;
+  --color-slate-700: #334155;
+  --color-slate-600: #475569;
+  --color-slate-500: #64748b;
+  --color-slate-400: #94a3b8;
+  --color-slate-300: #cbd5e1;
+  --color-slate-200: #e2e8f0;
+  
+  --color-cyan-500: #06b6d4;
+  --color-cyan-400: #22d3ee;
+  --color-cyan-300: #67e8f9;
+  --color-cyan-100: #cffafe;
+  
+  --color-blue-600: #2563eb;
+  --color-blue-500: #3b82f6;
+  --color-violet-500: #8b5cf6;
+  --color-yellow-400: #facc15;
+  --color-rose-400: #fb7185;
+  
+  --animate-pulse-graph: pulse-graph 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  
+  @keyframes pulse-graph {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 0.8; }
+  }
+}
+
+/* Base Styles */
+@layer base {
+  body {
+    background-color: var(--color-slate-950);
+    color: var(--color-slate-200);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+  
+  ::selection {
+    background-color: rgb(6 182 212 / 0.3);
+    color: var(--color-cyan-100);
+  }
+}
+
+/* Component Classes */
+@layer components {
+  .glass-panel {
+    background-color: rgb(15 23 42 / 0.4);
+    backdrop-filter: blur(24px);
+    border: 1px solid rgb(255 255 255 / 0.1);
+    box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.5);
+  }
+  
+  .glass-input {
+    background-color: rgb(255 255 255 / 0.05);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgb(51 65 85 / 0.5);
+    border-radius: 0.75rem;
+    transition: all 0.3s ease;
+  }
+  
+  .glass-input:focus {
+    border-color: rgb(6 182 212 / 0.5);
+    box-shadow: 0 0 0 2px rgb(6 182 212 / 0.3);
+    outline: none;
+  }
+  
+  .glow-btn {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+  }
+  
+  .glow-btn:hover {
+    box-shadow: 0 0 25px rgb(6 182 212 / 0.4);
+  }
+  
+  .glow-btn:active {
+    transform: scale(0.98);
+  }
+}
+
+/* Utilities */
+@layer utilities {
+  .text-gradient {
+    background: linear-gradient(135deg, #22d3ee 0%, #3b82f6 50%, #8b5cf6 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+  .custom-scrollbar::-webkit-scrollbar-track { background: rgb(15 23 42 / 0.3); border-radius: 3px; }
+  .custom-scrollbar::-webkit-scrollbar-thumb { background: rgb(51 65 85); border-radius: 3px; }
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: rgb(71 85 105); }
+}
+
+/* Manual prose fallback for v4 */
+.prose { color: var(--color-slate-300); line-height: 1.75; }
+.prose p { margin-top: 1.25em; margin-bottom: 1.25em; }
