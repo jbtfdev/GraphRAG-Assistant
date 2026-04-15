@@ -1,11 +1,9 @@
 export default function BackgroundPattern() {
   return (
     <div className="fixed inset-0 pointer-events-none z-0">
-      {/* Radial glow */}
       <div className="absolute top-[-20%] left-[-10%] w-[50%] h-[50%] bg-cyan-500/10 rounded-full blur-[120px]" />
       <div className="absolute bottom-[-20%] right-[-10%] w-[40%] h-[40%] bg-blue-600/10 rounded-full blur-[100px]" />
       
-      {/* <!-- Subtle grid overlay --> */}
       <div 
         className="absolute inset-0 opacity-[0.03]"
         style={{
@@ -14,7 +12,7 @@ export default function BackgroundPattern() {
         }}
       />
       
-      {/* <!-- Floating nodes simulation (CSS only for performance) --> */}
+      
       {[...Array(6)].map((_, i) => (
         <div
           key={i}

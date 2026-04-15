@@ -1,7 +1,7 @@
 export default function ResponsePanel({ answer, isProcessing }) {
   if (isProcessing) {
     return (
-      <div className="glass-panel rounded-2xl p-6 min-h-[320px] flex flex-col">
+      <div className="glass-panel rounded-2xl p-6 min-h-80 flex flex-col">
         <div className="flex items-center gap-2 mb-6 text-cyan-400 text-sm font-medium">
           <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse-graph" />
           Traversing Graph & Retrieving Literature...
@@ -17,7 +17,7 @@ export default function ResponsePanel({ answer, isProcessing }) {
 
   if (!answer) {
     return (
-      <div className="glass-panel rounded-2xl p-8 min-h-[320px] flex flex-col items-center justify-center text-center text-slate-500">
+      <div className="glass-panel rounded-2xl p-8 min-h-80 flex flex-col items-center justify-center text-center text-slate-500">
         <svg className="w-12 h-12 mb-4 text-slate-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
           <circle cx="12" cy="12" r="10" />
           <path d="M8 12h8M12 8v8" />
@@ -29,7 +29,7 @@ export default function ResponsePanel({ answer, isProcessing }) {
   }
 
   return (
-    <div className="glass-panel rounded-2xl p-6 min-h-[320px] flex flex-col">
+    <div className="glass-panel rounded-2xl p-6 min-h-80 flex flex-col">
       <div className="flex items-center justify-between mb-4 border-b border-slate-700/50 pb-3">
         <h2 className="text-sm font-semibold text-slate-300 tracking-wide uppercase">Synthesized Response</h2>
         <span className="text-xs text-slate-500 bg-slate-800 px-2 py-1 rounded">LLM + Graph Reasoning</span>

@@ -6,7 +6,7 @@ export default function QueryInput({ value, onChange, onSubmit, isProcessing }) 
           value={value}
           onChange={(e) => onChange(e.target.value)}
           placeholder="Ask a clinical question... (e.g., 'Mechanism of GLP-1 on cardiovascular outcomes?')"
-          className="w-full bg-transparent p-5 text-slate-100 placeholder-slate-500 resize-none min-h-[120px] focus:outline-none"
+          className="w-full bg-transparent p-5 text-slate-100 placeholder-slate-500 resize-none min-h-30 focus:outline-none"
           onKeyDown={(e) => {
             if (e.key === 'Enter' && !e.shiftKey) {
               e.preventDefault();

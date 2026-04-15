@@ -17,25 +17,40 @@ export default function App() {
     setIsProcessing(true);
     setData(null);
 
-    // 🔌 API INTEGRATION NOTE: Replace with actual fetch/axios call to your FastAPI/Node backend
-    // const res = await fetch('/api/query', { method: 'POST', body: JSON.stringify({ query }) });
-    // const json = await res.json();
-    
-    await new Promise((r) => setTimeout(r, 1800)); // Simulate network + LKG traversal
-    setIsProcessing(false);
-    setData({
-      answer: `Based on cross-referencing 142 PubMed papers and traversing the medical knowledge graph, the clinical consensus indicates that targeted GLP-1 agonists show statistically significant reduction in cardiovascular events (p<0.01) when combined with SGLT2 inhibitors. The pathway analysis reveals modulation via AMPK/mTOR signaling nodes.`,
-      confidence: 0.94,
-      sources: [
-        { id: 'PMID:34215890', title: 'GLP-1 Receptor Agonists and Cardiovascular Outcomes', journal: 'NEJM', year: 2023 },
-        { id: 'PMID:35109214', title: 'Synergistic Effects of SGLT2i in Metabolic Syndrome', journal: 'The Lancet', year: 2022 }
-      ],
-      path: ['Drug Class: GLP-1', '→ Target: GLP-1R', '→ Pathway: AMPK/mTOR', '→ Outcome: ↓ CV Events']
+    try {
+    const res = await fetch('http://localhost:8000/query', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ query })
     });
+    const data = await res.json();
+    setData({
+      answer: data.answer || "No response.",
+      confidence: data.confidence ?? 0,
+      sources: data.sources ?? [],
+      path: data.path ?? []
+    });
+  } catch (err) {
+    // error handling
+  } finally {
+    setIsProcessing(false);
+  }
+    
+    // await new Promise((r) => setTimeout(r, 1800)); 
+    // setIsProcessing(false);
+    // setData({
+    //   answer: `Based on cross-referencing 142 PubMed papers and traversing the medical knowledge graph, the clinical consensus indicates that targeted GLP-1 agonists show statistically significant reduction in cardiovascular events (p<0.01) when combined with SGLT2 inhibitors. The pathway analysis reveals modulation via AMPK/mTOR signaling nodes.`,
+    //   confidence: 0.94,
+    //   sources: [
+    //     { id: 'PMID:34215890', title: 'GLP-1 Receptor Agonists and Cardiovascular Outcomes', journal: 'NEJM', year: 2023 },
+    //     { id: 'PMID:35109214', title: 'Synergistic Effects of SGLT2i in Metabolic Syndrome', journal: 'The Lancet', year: 2022 }
+    //   ],
+    //   path: ['Drug Class: GLP-1', '→ Target: GLP-1R', '→ Pathway: AMPK/mTOR', '→ Outcome: ↓ CV Events']
+    // });
   };
 
   return (
-    <div className="min-h-screen relative overflow-x-hidden">
+    <div className="min-h-screen relative overflow-x-hidden pt-20">
       <BackgroundPattern />
       <main className="relative z-10 max-w-6xl mx-auto px-4 py-12 md:py-16 flex flex-col gap-12">
         <Header />

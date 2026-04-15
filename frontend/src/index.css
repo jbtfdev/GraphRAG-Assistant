@@ -1,30 +1,32 @@
 @import "tailwindcss";
-@plugin "@tailwindcss/typography";
+@import "@tailwindcss/typography";
 
 /* v4 Theme Configuration */
-@theme {
-  --color-slate-950: #020617;
-  --color-slate-900: #0f172a;
-  --color-slate-800: #1e293b;
-  --color-slate-700: #334155;
-  --color-slate-600: #475569;
-  --color-slate-500: #64748b;
-  --color-slate-400: #94a3b8;
-  --color-slate-300: #cbd5e1;
-  --color-slate-200: #e2e8f0;
-  
-  --color-cyan-500: #06b6d4;
-  --color-cyan-400: #22d3ee;
-  --color-cyan-300: #67e8f9;
-  --color-cyan-100: #cffafe;
-  
-  --color-blue-600: #2563eb;
-  --color-blue-500: #3b82f6;
-  --color-violet-500: #8b5cf6;
-  --color-yellow-400: #facc15;
-  --color-rose-400: #fb7185;
-  
-  --animate-pulse-graph: pulse-graph 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+@layer theme {
+  :root {
+    --color-slate-950: #020617;
+    --color-slate-900: #0f172a;
+    --color-slate-800: #1e293b;
+    --color-slate-700: #334155;
+    --color-slate-600: #475569;
+    --color-slate-500: #64748b;
+    --color-slate-400: #94a3b8;
+    --color-slate-300: #cbd5e1;
+    --color-slate-200: #e2e8f0;
+    
+    --color-cyan-500: #06b6d4;
+    --color-cyan-400: #22d3ee;
+    --color-cyan-300: #67e8f9;
+    --color-cyan-100: #cffafe;
+    
+    --color-blue-600: #2563eb;
+    --color-blue-500: #3b82f6;
+    --color-violet-500: #8b5cf6;
+    --color-yellow-400: #facc15;
+    --color-rose-400: #fb7185;
+    
+    --animate-pulse-graph: pulse-graph 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
   
   @keyframes pulse-graph {
     0%, 100% { opacity: 0.3; }

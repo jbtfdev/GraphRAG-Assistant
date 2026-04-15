@@ -1,9 +1,17 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
+from fastapi.middleware.cors import CORSMiddleware
 
 from src.main import pipeline
 
-app = FastAPI(tittle="MedGraphRAG API")
+app = FastAPI(title="MedGraphRAG API")
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:5173"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 class QueryRequest(BaseModel):
     query: str
@@ -21,6 +29,8 @@ def query_medgraphrag(request: QueryRequest):
     answer = pipeline(request.query)
 
     return {
-        "query": request.query,
-        "answer": answer
+        "answer": answer,
+        "confidence" : 0.0,
+        "sources" : [],
+        "path" : []
     }
