@@ -1,5 +1,5 @@
 @import "tailwindcss";
-@import "@tailwindcss/typography";
+/* @import "@tailwindcss/typography"; */
 
 /* v4 Theme Configuration */
 @layer theme {

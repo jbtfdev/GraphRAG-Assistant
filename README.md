@@ -1,4 +1,4 @@
-# GraphRAG v0.5 — Explainable Hybrid Retrieval System
+# MedGraph -- Research Based Medical Intelligence
 
 GraphRAG v0.5 is a hybrid retrieval system that combines **knowledge graphs (Neo4j)** with **vector search (FAISS)** and **LLMs** to generate more grounded and explainable answers.
 
