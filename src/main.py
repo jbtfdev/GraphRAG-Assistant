@@ -5,11 +5,11 @@ import pickle
 import requests
 from dotenv import load_dotenv
 # from src.models.embedding_model import model
-from src.ingestion.pdf_loader import load_pdf
-from src.Chunking.text_chunker import chunk_text
-from src.embedding.embedder import embedd
-from src.retriever.vector_store import vector_store
-from src.llm.generator import generator_answer
+# from src.ingestion.pdf_loader import load_pdf
+# from src.Chunking.text_chunker import chunk_text
+# from src.embedding.embedder import embedd
+# from src.retriever.vector_store import vector_store
+# from src.llm.generator import generator_answer
 from src.llm.groq_generator import groq_answer
 from src.graph.entity import extract_entities
 from src.graph.retriever import GraphRetriever
