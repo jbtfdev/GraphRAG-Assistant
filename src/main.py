@@ -2,8 +2,9 @@ import os
 import numpy as np
 import faiss
 import pickle
+import requests
 from dotenv import load_dotenv
-from src.models.embedding_model import model
+# from src.models.embedding_model import model
 from src.ingestion.pdf_loader import load_pdf
 from src.Chunking.text_chunker import chunk_text
 from src.embedding.embedder import embedd
@@ -14,8 +15,24 @@ from src.graph.entity import extract_entities
 from src.graph.retriever import GraphRetriever
 
 
-
 load_dotenv()
+HF_API_KEY = os.getenv("HF_API_KEY")
+API_URL = "https://router.huggingface.co/hf-inference/models/sentence-transformers/all-MiniLM-L6-v2/pipeline/feature-extraction"
+
+headers = {
+    "Authorization": f"Bearer {HF_API_KEY}"
+}
+def embed_query(text: str):
+    response = requests.post(
+        API_URL,
+        headers=headers,
+        json={"inputs": text}
+    )
+
+    response.raise_for_status()
+    return response.json()
+
+
 uri = os.getenv("NEO4J_URI")
 user = os.getenv("NEO4J_USER")
 password = os.getenv("NEO4J_PASSWORD")
@@ -24,7 +41,7 @@ def pipeline(query):
         graph_ret = GraphRetriever(uri,user,password)
 
         #QUERY ENTITY RETRAC
-        Q_vector = model.encode(query)
+        Q_vector = embed_query(query)
         Q_vector = np.array([Q_vector], dtype="float32")
         Q_entity = extract_entities(query)
 
@@ -64,3 +81,5 @@ def pipeline(query):
         # Response = generator_answer(query,context)
         answer = groq_answer(query,context)
         return answer
+
+
