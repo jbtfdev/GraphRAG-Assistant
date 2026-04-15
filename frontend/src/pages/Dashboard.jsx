@@ -17,8 +17,8 @@ export default function App() {
     setIsProcessing(true);
     setData(null);
 
-    const API_URL =
-    import.meta.env.VITE_API_URL || "http://localhost:8000";
+    const API_URL = "https://medgraph-backend-4am0.onrender.com";
+    // import.meta.env.VITE_API_URL || "http://localhost:8000";
 
 
     try {
