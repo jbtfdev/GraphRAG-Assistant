@@ -1,6 +1,12 @@
 import requests
 import json
+import os
+from groq import Groq
+from dotenv import load_dotenv
+    
+load_dotenv()  
 
+client = Groq(api_key=os.environ.get("GROQ_API_KEY"))
 
 def extract_entities(chunks: str):
     allowed_types = [
@@ -13,7 +19,7 @@ def extract_entities(chunks: str):
 ]
 
     context = chunks
-    prompt = f"""
+    query = f"""
                 Extract entities from the text.
 
                 Return ONLY a JSON array like:
@@ -34,18 +40,24 @@ def extract_entities(chunks: str):
                 {context}
 """
     
-    response = requests.post(
-        "http://localhost:11434/api/generate",
-        json={
-            "model" : "llama3.1:8b",
-            "prompt" : prompt,
-            "stream" : False,
-        }
+    response = client.chat.completions.create(
+        model="llama-3.3-70b-versatile",
+        messages=[{"role": "user", "content": f"Extract medical entities from: {query}"}]
     )
+    # response = requests.post(
+    #     "http://localhost:11434/api/generate",
+    #     json={
+    #         "model" : "llama3.1:8b",
+    #         "prompt" : prompt,
+    #         "stream" : False,
+    #     }
+    # )
 
-    data = response.json()
-    raw = data.get("response", "")
+    content = response.choices[0].message.content.strip()
+    try:
+        parsed = json.loads(content)
+        return parsed
+    except:
+        return []  
 
-    parsed = json.loads(raw)
 
-    return parsed
