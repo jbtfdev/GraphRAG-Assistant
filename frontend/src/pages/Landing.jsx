@@ -94,10 +94,10 @@ export default function Landing() {
          
           <div className="glass-panel rounded-3xl p-8 md:p-12 mb-20">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-              <StatCard value="35M+" label="PubMed Papers" />
-              <StatCard value="<1s" label="Response Time" />
-              <StatCard value="94%" label="Accuracy" />
-              <StatCard value="100+" label="Medical Ontologies" />
+              <StatCard value="Hybrid Retrieval" label="PubMed + Graph + Vector SearchPubMed Papers" />
+              <StatCard value="Real-Time Inference" label="Live Query Processing Pipeline" />
+              <StatCard value="Evidence Grounded" label="Context-Aware Response Synthesis" />
+              <StatCard value="Explainable AI" label="Sources, Paths, Confidence Ready" />
             </div>
           </div>
 
