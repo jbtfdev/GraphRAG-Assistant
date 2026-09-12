@@ -80,3 +80,14 @@ class Medinfo:
             Pubmed_metadata.append(paper_dict)
 
         return Pubmed_metadata
+
+
+# if __name__ == __main__:
+#     query = """
+#             (("type 2 diabetes" OR hypertension OR obesity OR "cardiovascular disease")
+#             AND
+#             (treatment OR therapy OR medication OR "clinical trial")
+#             AND
+#             (humans[MeSH Terms]))
+#             """
+    

@@ -83,3 +83,7 @@ def pipeline(query):
         return answer
 
 
+# if __name__ == "__main__":
+#     query = input("what is your Query")
+#     answer = pipeline(query)
+#     print(answer)

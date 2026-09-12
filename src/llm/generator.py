@@ -12,7 +12,7 @@ def generator_answer(query, chunks):
     response = requests.post(
         "http://localhost:11434/api/generate",
         json={
-            "model": "llama3.1:8b",  
+            "model": "openai/gpt-oss-120b",  
             "prompt": f"""
                         Use the context below to answer the question.
                         
