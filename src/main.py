@@ -79,11 +79,31 @@ def pipeline(query):
 
 
         # Response = generator_answer(query,context)
-        answer = groq_answer(query,context)
-        return answer
+        answer = groq_answer(query, context)
+
+        sources = [
+            {
+                "id": f"PubMed-{i + 1}",
+                "title": text[:100] + ("..." if len(text) > 100 else ""),
+                "journal": "PubMed",
+                "year": "Retrieved"
+            }
+            for i, text in enumerate(result_texts)
+        ]
+
+        path = [
+            f"Graph evidence {i + 1}: {text[:120]}..."
+            for i, text in enumerate(graph_chunks)
+        ]
+
+        return {
+            "answer": answer,
+            "sources": sources,
+            "path": path
+        }
 
 
-# if __name__ == "__main__":
-#     query = input("what is your Query")
-#     answer = pipeline(query)
-#     print(answer)
+if __name__ == "__main__":
+    query = input("what is your Query")
+    answer = pipeline(query)
+    print(answer)

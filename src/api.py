@@ -28,13 +28,13 @@ def health_check():
 
 @app.post("/query")
 def query_medgraphrag(request: QueryRequest):
-    answer = pipeline(request.query)
+    result = pipeline(request.query)
 
     return {
-        "answer": answer,
-        "confidence" : 0.0,
-        "sources" : [],
-        "path" : []
+        "answer": result["answer"],
+        "confidence": 0.0,
+        "sources": result["sources"],
+        "path": result["path"]
     }
 
 if __name__ == "__main__":
