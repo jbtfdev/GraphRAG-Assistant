@@ -1,4 +1,5 @@
 import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 export default function ResponsePanel({ answer, isProcessing }) {
   if (isProcessing) {
     return (
@@ -36,7 +37,9 @@ export default function ResponsePanel({ answer, isProcessing }) {
         <span className="text-xs text-slate-500 bg-slate-800 px-2 py-1 rounded">LLM + Graph Reasoning</span>
       </div>
       <div className="prose prose-invert prose-sm max-w-none flex-1 text-slate-300 leading-relaxed overflow-y-auto pr-2 custom-scrollbar">
-        <ReactMarkdown>{answer}</ReactMarkdown>
+        <ReactMarkdown remarkPlugins={[remarkGfm]}>
+          {answer}
+        </ReactMarkdown>
       </div>
       <div className="mt-4 pt-3 border-t border-slate-700/50 flex items-center justify-between text-xs text-slate-500">
         <span>Generated via MedGraphRAG v1.0</span>
